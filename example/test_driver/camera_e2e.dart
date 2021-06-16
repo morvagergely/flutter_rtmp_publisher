@@ -3,16 +3,16 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:rtmp_publisher/camera.dart';
-import 'package:e2e/e2e.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
+import 'package:integration_test/integration_test.dart';
 
 void main() {
-  Directory testDir;
+  late Directory testDir;
 
-  E2EWidgetsFlutterBinding.ensureInitialized();
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   setUpAll(() async {
     final Directory extDir = await getTemporaryDirectory();
@@ -50,7 +50,7 @@ void main() {
   // whether the image is exactly the desired resolution.
   Future<bool> testCaptureImageResolution(
       CameraController controller, ResolutionPreset preset) async {
-    final Size expectedSize = presetExpectedSizes[preset];
+    final Size expectedSize = presetExpectedSizes[preset]!;
     print(
         'Capturing photo at $preset (${expectedSize.width}x${expectedSize.height}) using camera ${controller.description.name}');
 
@@ -97,7 +97,7 @@ void main() {
   // whether the image is exactly the desired resolution.
   Future<bool> testCaptureVideoResolution(
       CameraController controller, ResolutionPreset preset) async {
-    final Size expectedSize = presetExpectedSizes[preset];
+    final Size expectedSize = presetExpectedSizes[preset]!;
     print(
         'Capturing video at $preset (${expectedSize.width}x${expectedSize.height}) using camera ${controller.description.name}');
 
