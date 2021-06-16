@@ -22,7 +22,7 @@ class Plane {
   /// The distance between adjacent pixel samples on Android, in bytes.
   ///
   /// Will be `null` on iOS.
-  final int bytesPerPixel;
+  final int? bytesPerPixel;
 
   /// The row stride for this color plane, in bytes.
   final int bytesPerRow;
@@ -30,12 +30,12 @@ class Plane {
   /// Height of the pixel buffer on iOS.
   ///
   /// Will be `null` on Android
-  final int height;
+  final int? height;
 
   /// Width of the pixel buffer on iOS.
   ///
   /// Will be `null` on Android.
-  final int width;
+  final int? width;
 }
 
 // TODO:(bmparr) Turn [ImageFormatGroup] to a class with int values.
