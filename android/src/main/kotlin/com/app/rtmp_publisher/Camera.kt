@@ -771,6 +771,9 @@ class Camera(
             }
         })
         bitrateAdapter!!.setMaxBitrate(rtmpCamera!!.getBitrate())
+        activity!!.runOnUiThread {
+            dartMessenger.send(DartMessenger.EventType.RTMP_CONNECTED, "Connected")
+        }
     }
 
     override fun onConnectionFailedRtmp(reason: String) {
