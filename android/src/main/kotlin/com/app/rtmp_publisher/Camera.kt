@@ -765,7 +765,6 @@ class Camera(
     }
 
     override fun onConnectionSuccessRtmp() {
-        Log.d("Camera", "onConnectionSuccessRtmp")
         bitrateAdapter = BitrateAdapter(object : BitrateAdapter.Listener {
             override fun onBitrateAdapted(bitrate: Int) {
                 rtmpCamera!!.setVideoBitrateOnFly(bitrate)
@@ -778,7 +777,6 @@ class Camera(
     }
 
     override fun onConnectionFailedRtmp(reason: String) {
-        Log.d("Camera", "onConnectionFailedRtmp")
         if (rtmpCamera != null) {
             // Retry first.
             for (i in currentRetries..maxRetries) {

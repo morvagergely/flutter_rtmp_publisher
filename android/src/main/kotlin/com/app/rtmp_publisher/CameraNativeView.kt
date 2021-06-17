@@ -59,9 +59,14 @@ class CameraNativeView(
     }
 
     override fun onConnectionSuccessRtmp() {
+        Log.d("Camera", "onConnectionSuccessRtmp")
+        activity?.runOnUiThread {
+            dartMessenger?.send(DartMessenger.EventType.RTMP_CONNECTED, "Connected")
+        }
     }
 
     override fun onConnectionFailedRtmp(reason: String) {
+        Log.d("Camera", "onConnectionFailedRtmp")
         activity?.runOnUiThread { //Wait 5s and retry connect stream
             if (rtmpCamera.reTry(5000, reason)) {
                 dartMessenger?.send(DartMessenger.EventType.RTMP_RETRY, reason)
